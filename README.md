@@ -4,7 +4,8 @@
 - при заупуске двух nginx с --network host второй не запускается (2019/03/23 20:32:33 [emerg] 1#1: bind() to 0.0.0.0:80 failed (98: Address already in use)), т.к. host отдаёт по сути не сеть, а сетевой интерфес и два приложения не могут забиндить на нём порт
 - --network none создаёт netns, ip netns exec 4714df7cca45 ifconfig выводит только lo0
 - изменён run.sh для разделения fron и back по разным сетям
-
+- добавлена конфигурация docker-compose
+- изменена конфигурация docker-compose для использования параметров из .env файла
 
 
 # ДЗ docker-3
