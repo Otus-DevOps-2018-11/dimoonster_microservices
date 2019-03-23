@@ -6,7 +6,7 @@
 - изменён run.sh для разделения fron и back по разным сетям
 - добавлена конфигурация docker-compose
 - изменена конфигурация docker-compose для использования параметров из .env файла
-
+- по-умолчанию, dc берёт в качестве префикса имя каталога, ав котором находится docker-compose.yml, изменить префикс можно установоив значение переменной окружения COMPOSE_PROJECT_NAME, либо запускать docker-compose с параметром -p (https://github.com/docker/compose/issues/2982). Как вариант, можно в файл .env добавить COMPOSE_PROJECT_NAME=prj1 и у всех сущностей будет префикс prj1
 
 # ДЗ docker-3
 
