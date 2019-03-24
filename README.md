@@ -1,3 +1,10 @@
+# ДЗ monitoring
+
+- запущен контенйр с прометеус 2.1.0
+- собрано приложение и запущено вместе с мониторингом
+- добавлен контейнер с наблюдением за хостом
+- docker hub: https://hub.docker.com/u/dimoon
+
 # ДЗ gitlab-ci
 
 - Поднята VM с помощью -docker-machine (.scripts/create_gitlab_vm.sh)
