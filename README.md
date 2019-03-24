@@ -6,7 +6,7 @@
 - Добавлен runner и подключен к gitlab
 - Добавлено приложение reddit
 - Environment в gitlab переехали в Operations
-
+- добавление тэга с версией
 
 
 # ДЗ docker-4
