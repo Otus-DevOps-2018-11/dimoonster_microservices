@@ -4,7 +4,7 @@
 - Запущен gitlab (srv/gitlab/docker-compose.yml)
 - Запушен проект в  http://gitlab/homework/example.git
 - Добавлен runner и подключен к gitlab
-
+- Добавлено приложение reddit
 
 
 # ДЗ docker-4
