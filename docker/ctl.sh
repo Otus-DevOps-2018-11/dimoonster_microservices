@@ -12,4 +12,7 @@ case $1 in
     build)
         docker build -t dimoon/prometheus ../monitoring/prometheus
     ;;
+    build-alert)
+        docker build -t dimoon/alertmanager ../monitoring/alertmanager
+    ;;
 esac

@@ -17,6 +17,18 @@ services:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
       - '--storage.tsdb.retention=1d'
+      
+  alertmanager:
+    image: ${USERNAME}/alertmanager
+    networks:
+      backend-net:
+        aliases:
+          - alertmanager
+    command:
+      - '--config.file=/etc/alertmanager/config.yml'
+    ports:
+      - 9093:9093
+
   node-exporter:
     image: prom/node-exporter:v0.15.2
     networks:
