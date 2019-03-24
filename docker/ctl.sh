@@ -3,11 +3,17 @@
 case $1 in
     start)
         docker-compose up -d
-        docker-compose -f docker-compose-monitoring.yml up -d
+        #docker-compose -f docker-compose-monitoring.yml up -d
     ;;
     stop)
-        docker-compose -f docker-compose-monitoring.yml down
+        #docker-compose -f docker-compose-monitoring.yml down
         docker-compose down
+    ;;
+    start-logging)
+        docker-compose -f docker-compose-logging.yml up -d
+    ;;
+    stop-logging)
+        docker-compose -f docker-compose-logging.yml down
     ;;
     build)
         docker build -t dimoon/prometheus ../monitoring/prometheus

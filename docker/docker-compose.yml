@@ -29,6 +29,11 @@ services:
           - ${MS_POST_NAME}
     environment:
       - POST_DATABASE_HOST=${DB_POST}
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: 127.0.0.1:24224
+        tag: service.post
   comment:
     image: ${USERNAME}/comment:${VER_COMMENT}
     networks:
