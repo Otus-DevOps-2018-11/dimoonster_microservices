@@ -1,6 +1,8 @@
 # ДЗ gitlab-ci
 
 - Поднята VM с помощью -docker-machine (.scripts/create_gitlab_vm.sh)
+- Запущен gitlab (srv/gitlab/docker-compose.yml)
+- Запушен проект в  http://gitlab/homework/example.git
 
 
 # ДЗ docker-4
