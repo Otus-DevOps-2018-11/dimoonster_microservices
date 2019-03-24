@@ -36,8 +36,12 @@ deploy_job:
   script:
     - echo 'Deploy'
   environment:
-    name: dev
-    url: http://dev.example.com
+    name: branch/$CI_COMMIT_REF_NAME
+    url: http://$CI_COMMIT_REF_NAME.example.com
+  only:
+    - branches
+  except:
+    - master
 
 staging:
   stage: stage
