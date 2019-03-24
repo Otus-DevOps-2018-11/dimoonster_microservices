@@ -18,6 +18,11 @@ services:
     environment:
       - POST_SERVICE_HOST=${MS_POST_NAME}
       - COMMENT_SERVICE_HOST=${MS_COMMENT_NAME}
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: 127.0.0.1:24224
+        tag: service.ui
   post:
     image: ${USERNAME}/post:${VER_POST}
     networks:
