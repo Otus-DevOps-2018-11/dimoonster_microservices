@@ -5,6 +5,8 @@
 - Запушен проект в  http://gitlab/homework/example.git
 - Добавлен runner и подключен к gitlab
 - Добавлено приложение reddit
+- Environment в gitlab переехали в Operations
+
 
 
 # ДЗ docker-4
