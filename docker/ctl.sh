@@ -15,4 +15,7 @@ case $1 in
     build-alert)
         docker build -t dimoon/alertmanager ../monitoring/alertmanager
     ;;
+    build-fluentd)
+        docker build -t dimoon/fluentd ../logging/fluentd
+    ;;
 esac
