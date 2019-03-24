@@ -1,3 +1,8 @@
+# ДЗ gitlab-ci
+
+- Поднята VM с помощью -docker-machine (.scripts/create_gitlab_vm.sh)
+
+
 # ДЗ docker-4
 
 - при запуске с --network host видны все сетевые интерфейсы машины с докером
