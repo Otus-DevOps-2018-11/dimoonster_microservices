@@ -1,3 +1,14 @@
+# ДЗ gitlab-ci
+
+- Поднята VM с помощью -docker-machine (.scripts/create_gitlab_vm.sh)
+- Запущен gitlab (srv/gitlab/docker-compose.yml)
+- Запушен проект в  http://gitlab/homework/example.git
+- Добавлен runner и подключен к gitlab
+- Добавлено приложение reddit
+- Environment в gitlab переехали в Operations
+- добавление тэга с версией
+
+
 # ДЗ docker-4
 
 - при запуске с --network host видны все сетевые интерфейсы машины с докером
