@@ -1,0 +1,58 @@
+version: '3.3'
+services:
+  post_db:
+    image: mongo:${VER_MONGO}
+    volumes:
+      - post_db:/data/db
+    networks:
+      backend-net:
+        aliases:
+          - ${DB_POST}
+          - ${DB_COMMENT}
+  ui:
+    build: ./ui
+    image: ${USERNAME}/ui:${VER_UI}
+    ports:
+      - ${APP_PORT}:9292/tcp
+    networks:
+      - frontend-net
+    environment:
+      - POST_SERVICE_HOST=${MS_POST_NAME}
+      - COMMENT_SERVICE_HOST=${MS_COMMENT_NAME}
+  post:
+    build: ./post-py
+    image: ${USERNAME}/post:${VER_POST}
+    networks:
+      backend-net:
+        aliases:
+          - ${MS_POST_NAME}
+      frontend-net:
+        aliases:
+          - ${MS_POST_NAME}
+    environment:
+      - POST_DATABASE_HOST=${DB_POST}
+  comment:
+    build: ./comment
+    image: ${USERNAME}/comment:${VER_COMMENT}
+    networks:
+      backend-net:
+        aliases:
+          - ${MS_COMMENT_NAME}
+      frontend-net:
+        aliases:
+          - ${MS_COMMENT_NAME}
+    environment:
+      - COMMENT_DATABASE_HOST=${DB_COMMENT}
+
+volumes:
+  post_db:
+
+networks:
+  frontend-net:
+    ipam:
+      config:
+        - subnet: 10.1.1.0/24
+  backend-net:
+    ipam:
+      config:
+        - subnet: 10.1.2.0/24
