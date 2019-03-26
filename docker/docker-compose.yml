@@ -9,6 +9,8 @@ services:
         aliases:
           - ${DB_POST}
           - ${DB_COMMENT}
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED} 
   ui:
     image: ${USERNAME}/ui:${VER_UI}
     ports:
@@ -18,6 +20,12 @@ services:
     environment:
       - POST_SERVICE_HOST=${MS_POST_NAME}
       - COMMENT_SERVICE_HOST=${MS_COMMENT_NAME}
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED} 
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: 127.0.0.1:24224
+        tag: service.ui
   post:
     image: ${USERNAME}/post:${VER_POST}
     networks:
@@ -29,6 +37,12 @@ services:
           - ${MS_POST_NAME}
     environment:
       - POST_DATABASE_HOST=${DB_POST}
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED} 
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: 127.0.0.1:24224
+        tag: service.post
   comment:
     image: ${USERNAME}/comment:${VER_COMMENT}
     networks:
@@ -40,6 +54,7 @@ services:
           - ${MS_COMMENT_NAME}
     environment:
       - COMMENT_DATABASE_HOST=${DB_COMMENT}
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED} 
 
 volumes:
   post_db:

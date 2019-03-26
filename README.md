@@ -1,3 +1,12 @@
+# ДЗ logging
+
+- Собран контейнер с fluentd
+- запущено приложение и посмотрено, какие логи оно выдаёт
+- исправлен docker-compose-logging.yml для поиска образов elastic и kibana
+- настроен сбор логов контейнера post в elastic через fluentd
+- на хост машине запущен sysctl -w vm.max_map_count=262144
+- добавлен контейнер с zipkin для трейсинга
+
 # ДЗ monitoring -2
 
 - Разделён docker-compose на приложение и отдельно мониторинг

@@ -1,0 +1,62 @@
+version: '3'
+services:
+  fluentd:
+    image: ${USERNAME}/fluentd
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+    networks:
+      - esnet
+
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - 9411:9411
+    networks:
+      - esnet
+      - frontend-net
+      - backend-net
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.6.2
+    container_name: elasticsearch
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+
+    expose:
+      - 9200
+    ports:
+      - "9200:9200"
+    
+    networks:
+      - esnet
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.6.2
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    networks:
+      - esnet
+
+volumes:
+  esdata:
+
+networks:
+  esnet:
+  frontend-net:
+    ipam:
+      config:
+        - subnet: 10.1.1.0/24
+  backend-net:
+    ipam:
+      config:
+        - subnet: 10.1.2.0/24
